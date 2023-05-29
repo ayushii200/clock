@@ -5,8 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>clock project</title>
+    <style>
+        #clock,#date{
+            font-size: 30px;
+
+        }
+    </style>
 </head>
-<body>
-    
+<body><font size=35px; color="red";>Time:</font>
+    <div id="clock">7
+
+    </div><br>
+    <font size=35px; color="red";>Date:</font>
+    <div id="date">3</div>
+    <script>
+        setInterval(showtime,1000);
+        function showtime(){
+            let time=new Date();
+            let hour=time.getHours();
+            let minutes=time.getMinutes();
+            let seconds=time.getSeconds();
+            let ms=time.getMilliseconds();
+            am_pm="AM";
+
+            if(hour>=12 & hour<24){
+                am_pm="PM";
+            }
+            if(hour==0 & hour<12){
+                am_pm="AM";
+            }
+            hour = hour < 10 ? "0" + hour : hour;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            let currtime= hour + ":" + minutes + ":" + seconds + ":" + ms + am_pm;
+            document.getElementById("clock").innerHTML=currtime;
+
+        }
+        showtime();
+        
+        function showdate(){
+            let date= new Date();
+            let year=date.getFullYear();
+            let month=date.getMonth()+1;
+            let day=date.getDate();
+
+            let curdate= year+ "-"+ month+ "-"+day;
+            document.getElementById("date").innerHTML=curdate;
+        }
+        showdate();
+   
+    </script>
 </body>
 </html>
